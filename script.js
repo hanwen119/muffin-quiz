@@ -104,6 +104,16 @@ const RESULTS = {
 // ===== 狀態 =====
 let currentIndex = 0;
 let answers = []; // {axis, pole}
+let quizOrder = []; // 每次開始測驗時重洗的題目順序
+
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
 
 // ===== DOM =====
 const $ = id => document.getElementById(id);
@@ -115,19 +125,19 @@ function show(name) {
   window.scrollTo({ top: 0 });
 }
 
-$('start-quiz-btn').addEventListener('click', () => { currentIndex = 0; answers = []; show('quiz'); loadQuestion(); });
+$('start-quiz-btn').addEventListener('click', () => { currentIndex = 0; answers = []; quizOrder = shuffle(QUESTIONS); show('quiz'); loadQuestion(); });
 $('next-question-btn').addEventListener('click', nextQuestion);
 $('user-info-form').addEventListener('submit', handleGateSubmit);
-$('restart-quiz-btn').addEventListener('click', () => { currentIndex = 0; answers = []; show('quiz'); loadQuestion(); });
+$('restart-quiz-btn').addEventListener('click', () => { currentIndex = 0; answers = []; quizOrder = shuffle(QUESTIONS); show('quiz'); loadQuestion(); });
 
 let selected = null;
 
 function loadQuestion() {
   selected = null;
-  const q = QUESTIONS[currentIndex];
-  $('question-number').textContent = `第 ${currentIndex + 1} 題／共 ${QUESTIONS.length} 題`;
+  const q = quizOrder[currentIndex];
+  $('question-number').textContent = `第 ${currentIndex + 1} 題／共 ${quizOrder.length} 題`;
   $('question-text').textContent = q.q;
-  $('progress-bar').style.width = `${(currentIndex / QUESTIONS.length) * 100}%`;
+  $('progress-bar').style.width = `${(currentIndex / quizOrder.length) * 100}%`;
 
   const container = $('options-container');
   container.innerHTML = '';
@@ -148,14 +158,14 @@ function loadQuestion() {
   });
 
   $('next-question-btn').disabled = true;
-  $('next-question-btn').textContent = currentIndex === QUESTIONS.length - 1 ? '完成測驗 🎉' : '下一題';
+  $('next-question-btn').textContent = currentIndex === quizOrder.length - 1 ? '完成測驗 🎉' : '下一題';
 }
 
 function nextQuestion() {
   if (!selected) return;
   answers[currentIndex] = selected;
   currentIndex++;
-  if (currentIndex < QUESTIONS.length) {
+  if (currentIndex < quizOrder.length) {
     loadQuestion();
   } else {
     $('progress-bar').style.width = '100%';

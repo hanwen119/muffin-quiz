@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>瑪芬口味測驗｜找出妳最適合的賺錢路線</title>
+  <meta name="description" content="3 分鐘、9 題，測出妳是哪一種瑪芬，找出最適合妳的在家賺錢路線。幸福媽媽設計師出品。">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+
+    <!-- 開場 -->
+    <section id="intro-section">
+      <div class="intro-emoji">🧁</div>
+      <h1>瑪芬口味測驗</h1>
+      <p class="subtitle">找出妳最適合的賺錢路線</p>
+      <p class="intro-text">
+        每個媽媽都是一顆獨一無二的瑪芬——<br>
+        有人是閃閃發光的草莓，有人是溫潤回甘的抹茶。<br><br>
+        3 分鐘、9 個直覺問題，<br>
+        測出妳的口味，找到那條<br>
+        <strong>能賺錢、又讓妳有電</strong>的路。
+      </p>
+      <button id="start-quiz-btn" class="primary-btn">🧁 開始測驗</button>
+    </section>
+
+    <!-- 測驗 -->
+    <section id="quiz-section" style="display:none;">
+      <div class="progress-track"><div id="progress-bar" class="progress-bar"></div></div>
+      <p id="question-number" class="question-number"></p>
+      <h2 id="question-text" class="question-text"></h2>
+      <div id="options-container" class="options"></div>
+      <button id="next-question-btn" class="primary-btn" disabled>下一題</button>
+    </section>
+
+    <!-- Email 閘門 -->
+    <section id="user-info-section" style="display:none;">
+      <h2>🎉 完成了！妳的瑪芬正在出爐</h2>
+      <p class="gate-text">留下妳的稱呼和信箱，馬上看結果——<br>我也會把完整的口味分析寄一份到妳的信箱，之後隨時可以回味。</p>
+      <form id="user-info-form" class="user-info-form">
+        <div class="form-group">
+          <label for="user-name">怎麼稱呼妳</label>
+          <input type="text" id="user-name" required placeholder="例如：小雯">
+        </div>
+        <div class="form-group">
+          <label for="user-email">信箱</label>
+          <input type="email" id="user-email" required placeholder="you@example.com">
+        </div>
+        <button type="submit" id="submit-info-btn" class="primary-btn">🔍 看我的瑪芬口味</button>
+        <p class="privacy-note">我們只會用這個信箱寄結果和之後的免費資源給妳，不會亂寄廣告。</p>
+      </form>
+    </section>
+
+    <!-- 結果 -->
+    <section id="result-section" style="display:none;">
+      <p class="result-eyebrow">妳是——</p>
+      <h2 id="result-flavor" class="result-flavor"></h2>
+      <p id="result-subtitle" class="result-subtitle"></p>
+      <div id="result-avatar-wrap" class="result-avatar-wrap"></div>
+      <p id="result-quote" class="result-quote"></p>
+      <div class="result-block"><h3>💗 妳的特質</h3><p id="result-traits"></p></div>
+      <div class="result-block"><h3>✨ 妳的優勢</h3><p id="result-advantages"></p></div>
+      <div class="result-block"><h3>🌱 盲點提醒</h3><p id="result-blindspots"></p></div>
+      <div class="result-block"><h3>💰 創收建議</h3><p id="result-income"></p></div>
+      <p class="axes-note">這個結果來自三個軸：妳的電力來源 × 行動節奏 × 舞台位置。沒有好壞，只有適不適合妳。</p>
+      <a class="line-cta" href="https://lin.ee/QPteACN" target="_blank" rel="noopener">
+        💬 加 LINE 回「我測完了」＋妳的口味<br><span>涵雯會給妳專屬的下一步建議</span>
+      </a>
+      <button id="restart-quiz-btn" class="ghost-btn">再測一次</button>
+    </section>
+
+    <footer class="footer">© 幸福媽媽設計師 Home Media Tutor</footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

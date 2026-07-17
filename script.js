@@ -1,6 +1,6 @@
 // ===== 設定 =====
 // 部署好 Apps Script 之後，把網址貼在這裡（留空＝不記名單、不寄信，僅顯示結果）
-const APPS_SCRIPT_URL = '';
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwPYeVoaSkMZo4MDxPVnYUWbAjz77GP0fzQM7vO09rOZbIDO31G78x7dH_aRmPs5y16Qg/exec';
 
 // ===== 題目（9 題，三軸各 3 題，內部計分用 axis/pole，畫面上不顯示）=====
 const QUESTIONS = [
